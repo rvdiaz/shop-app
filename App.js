@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Provider } from 'react-redux';
+import { CartNavigation } from './src/navigation/CartNavigation/CartNavigation';
+import * as Font from 'expo-font'; 
+
+import fonts from './src/theme/fonts';
+import store from './src/store/store';
 
 export default function App() {
+  const [fontLoad, setfontLoad] = useState(false);
+  const {types}=fonts;
+
+  const loadFonts=async()=>{
+    await Font.loadAsync({
+      [types.robotoItalic.name]: types.robotoItalic.url,
+      [types.robotoRegular.name]: types.robotoRegular.url
+    });
+  }
+
+  useEffect(() => {
+    loadFonts();
+    setfontLoad(true);
+  }, [])
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    fontLoad && 
+    <Provider store={store}>
+      <CartNavigation/>
+    </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
