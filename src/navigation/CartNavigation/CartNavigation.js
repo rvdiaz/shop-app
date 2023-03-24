@@ -1,13 +1,18 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
-import { Button, Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { AllProducts } from '../../screens/AllProducts/AllProducts';
 import { Cart } from '../../screens/Cart/Cart';
 import { AntDesign } from '@expo/vector-icons';
+import { Badge } from 'react-native-elements';
+import getTotalCartProducts from '../../components/helpers/getTotalCartProducts';
+import { useSelector } from 'react-redux';
 
 export const CartNavigation = () => {
     const Stack=createNativeStackNavigator();
+    const products=useSelector(state=>state.cart.products);
+    const totalProducts=getTotalCartProducts(products);
   return (
     <NavigationContainer>
         <Stack.Navigator
@@ -25,6 +30,18 @@ export const CartNavigation = () => {
                       }}
                     >
                       <AntDesign name="shoppingcart" size={24} color="black" />
+                      <Badge
+                        status="primary"
+                        containerStyle={{ position: 'absolute', top: -4, right: -10 }}
+                        value={totalProducts}
+                        textStyle={{
+                          fontSize:12
+                        }}
+                        badgeStyle={{
+                          padding:1,
+                          height:'auto'
+                        }}
+                      />
                   </TouchableOpacity>
                 }
               })}

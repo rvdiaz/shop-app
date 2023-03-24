@@ -22,9 +22,9 @@ const productsCart=createSlice({
                 })
             }
         },
-        findById(state,id){
-            /* console.log('sdsd');
-            return state.productsCart.find((prod)=>prod==id.payload); */
+        deleteProduct(state,id){
+            const newArray=state.products.filter((item)=>item.product.id!=id.payload);
+            state.products=[...newArray];
         }
     }
 })

@@ -29,6 +29,6 @@ export const AllProductsComponent = () => {
     }, [])
     
   return (
-   <ListProducts products={products}/>
+   <ListProducts products={products} type='allproducts'/>
   )
 }

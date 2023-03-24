@@ -4,7 +4,9 @@ import fonts from "../theme/fonts"
 const container={
         flex:1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        paddingHorizontal:20,
+        paddingVertical:10
     }
 
 const cards={
@@ -20,7 +22,6 @@ const cards={
         overflow:'hidden',
         shadowOpacity:0.3,
         shadowColor:Colors.shadowColor,
-        marginHorizontal:20,
         marginVertical:10
     },
     imageContainer:{},
