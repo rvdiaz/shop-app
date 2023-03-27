@@ -25,6 +25,9 @@ const productsCart=createSlice({
         deleteProduct(state,id){
             const newArray=state.products.filter((item)=>item.product.id!=id.payload);
             state.products=[...newArray];
+        },
+        emptyCart(state){
+            state.products=[];
         }
     }
 })

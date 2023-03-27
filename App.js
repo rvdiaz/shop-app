@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import { CartNavigation } from './src/navigation/CartNavigation/CartNavigation';
 import * as Font from 'expo-font'; 
 
 import fonts from './src/theme/fonts';
 import store from './src/store/store';
+import { TabNavigation } from './src/navigation/TabNavigation/TabNavigation';
 
 export default function App() {
   const [fontLoad, setfontLoad] = useState(false);
@@ -25,7 +25,7 @@ export default function App() {
   return (
     fontLoad && 
     <Provider store={store}>
-      <CartNavigation/>
+      <TabNavigation/>
     </Provider>
   );
 }

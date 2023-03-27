@@ -47,7 +47,7 @@ export const CardProduct = (props) => {
                     >{title}</Text>
                     <Text
                         style={priceText}
-                    >{price}</Text>
+                    >${price}</Text>
                 </View>
             <View
                 style={buttonContainer}

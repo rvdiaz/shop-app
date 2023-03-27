@@ -28,7 +28,7 @@ export const CartProduct = (props) => {
                 ellipsizeMode='tail'
             >{title}</Text>
         </View>
-        <Text>{price}</Text>
+        <Text>${price}</Text>
         <TouchableOpacity
             onPress={handleDelete}
             >
@@ -42,6 +42,7 @@ const styles=StyleSheet.create({
     container:{
         flexDirection:'row',
         justifyContent:'space-between',
-        marginVertical:10
+        marginVertical:10,
+        width:'100%'
     }
 })

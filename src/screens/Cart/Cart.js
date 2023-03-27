@@ -1,25 +1,17 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import { useSelector } from 'react-redux';
+import moment from 'moment/moment';
+import React, { useId } from 'react'
+import { StyleSheet } from 'react-native';
+import { View, Text, Button } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux';
+import getTotalPriceInCart from '../../helpers/getTotalPriceInCart';
 import { ListProducts } from '../../components/molecules/ListProducts/ListProducts';
+import { CartProductsComponent } from '../../components/organisms/CartProductsComponent/CartProductsComponent';
+import { ordersActions } from '../../store/orders/orders';
+import { cartActions } from '../../store/productsCart/productsCart';
 import styles from '../../styles/theme'
 
 export const Cart = () => {
-    const {container}=styles;
-    const cartProducts=useSelector(state=>state.cart.products);
-
   return (
-   <View
-    style={
-        container
-    }
-   >
-    {cartProducts.length>0 ?
-    <ListProducts products={cartProducts} type='cartProducts'/> 
-    :
-    <Text>Not items added to Cart</Text>
-    }
-    
-   </View>
+   <CartProductsComponent/>
   )
 }

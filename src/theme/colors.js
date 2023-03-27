@@ -2,7 +2,8 @@ const Colors ={
     primaryColor:'blue',
     secondaryColor:'red',
     shadowColor:'black',
-    lightColor:'white'
+    lightColor:'white',
+    borderColor:'gray'
 }
 
 export default Colors;
