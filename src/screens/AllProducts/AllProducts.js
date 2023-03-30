@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import { AllProductsComponent } from '../../components/organisms/AllProductsComponent/AllProductsComponent'
 import styles from '../../styles/theme'
 
-export const AllProducts = ({navigation}) => {
+export const AllProducts = () => {
     const {container}=styles;
 
   return (
@@ -12,7 +12,7 @@ export const AllProducts = ({navigation}) => {
             container
         }
     >
-        <AllProductsComponent/>
+        <AllProductsComponent type='allProducts'/>
     </View>
   )
 }

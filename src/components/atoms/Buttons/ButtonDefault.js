@@ -10,14 +10,13 @@ export const ButtonDefault = (props) => {
         onPress={()=>{
             onPress();
         }}
-        style={{...style,}}
+        style={{...style}}
     />
   )
 }
 
 const styles=StyleSheet.create({
     button:{
-        backgroundColor:Colors.primaryColor,
-
+        backgroundColor:Colors.primaryColor
     }
 })

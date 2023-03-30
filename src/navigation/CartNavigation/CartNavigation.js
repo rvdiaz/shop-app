@@ -7,6 +7,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Badge } from 'react-native-elements';
 import getTotalCartProducts from '../../helpers/getTotalCartProducts';
 import { useSelector } from 'react-redux';
+import { ProductSingle } from '../../screens/ProductSingle/ProductSingle';
 
 export const CartNavigation = () => {
     const Stack=createNativeStackNavigator();
@@ -45,6 +46,10 @@ export const CartNavigation = () => {
             }
           })}
           />
+        <Stack.Screen
+          name="ProductDetail"
+          component={ProductSingle}
+        />
         <Stack.Screen 
           name="cart" 
           component={Cart}

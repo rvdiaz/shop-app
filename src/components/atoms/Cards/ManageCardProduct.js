@@ -1,49 +1,51 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
-import { Button, Image, TouchableHighlight, View, Text } from 'react-native'
+import { Alert, StyleSheet } from 'react-native';
+import { Button, Image, View, Text } from 'react-native'
 import { useDispatch } from 'react-redux';
-import { cartActions } from '../../../store/productsCart/productsCart';
+import { productsActions } from '../../../store/products/products';
 import styles from '../../../styles/theme';
 import { CardsContainer } from './CardsContainer';
 
-export const CardProduct = (props) => {
+export const ManageCardProduct = (props) => {
     const dispatch=useDispatch();
     const {product}=props;
 
     const {images,price,title,description,id}=product;
     const navigation=useNavigation();
     
-    const {imageContainer,infoContainer,buttonContainer,descriptionContainer,priceText,titleText,descriptionText}=styles.cards;
+    const {infoContainer,buttonContainer,descriptionContainer,priceText,titleText,descriptionText}=styles.cards;
     const [OpenDetail, setOpenDetail] = useState(false);
-    
-   /*  const inCart=dispatch(cartActions.findById(id)); */
-
-    const handleAddCart=()=>{
-        dispatch(cartActions.addProduct(product));
-    }
 
     const handleDetail=()=>{
         setOpenDetail(!OpenDetail);
     }
-
-    const handleProductDetail=()=>{
-        navigation.navigate('ProductDetail',{
+    const handleEdit=()=>{
+        navigation.navigate('Edit Product',{
             id:id
-        });
+        })
+    }
+    const handleAlert=()=>{
+       Alert.alert('Are you sure','',[
+        {
+            text:'Yes',
+            onPress:()=>{
+                dispatch(productsActions.deleteProduct(id));
+            }
+        },
+        {
+            text:'No'
+        }
+       ])
     }
 
   return (
    <CardsContainer>
-        <TouchableHighlight
-            style={imageContainer}
-            onPress={handleProductDetail}
-        >
-            <Image 
-                style={{
-                    height:200
-                }}
-                source={{uri:images && images[0]}}/>
-        </TouchableHighlight>
+        <Image 
+            style={{
+                height:200
+            }}
+            source={{uri:images && images[0]}}/>
         <View
             style={{
                 padding:15
@@ -66,10 +68,16 @@ export const CardProduct = (props) => {
                     title={OpenDetail ? 'Less' : 'More'}
                     onPress={handleDetail}
                     />
-                <Button 
-                    title='Add to Cart'
-                    onPress={handleAddCart}
-                    />
+                    <View style={styleUi.buttonCardContainer}>
+                        <Button 
+                            title='Edit'
+                            onPress={handleEdit}
+                        />
+                        <Button 
+                            title='Delete'
+                            onPress={handleAlert}
+                        />
+                    </View>
             </View>
             {
                 OpenDetail && <View
@@ -87,3 +95,10 @@ export const CardProduct = (props) => {
   )
 }
 
+const styleUi=StyleSheet.create({
+    buttonCardContainer:{
+        width:'40%',
+        flexDirection:'row',
+        justifyContent:'space-between'
+    }
+})

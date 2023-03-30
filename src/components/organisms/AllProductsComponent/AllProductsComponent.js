@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { productsActions } from '../../../store/products/products';
 import { ListProducts } from '../../molecules/ListProducts/ListProducts'
 
-export const AllProductsComponent = () => {
+export const AllProductsComponent = (props) => {
+    const {type}=props;
     const dispatch=useDispatch();
     const setProducts=async()=>{
         try {
@@ -29,6 +30,6 @@ export const AllProductsComponent = () => {
     }, [])
     
   return (
-   <ListProducts products={products} type='allproducts'/>
+   <ListProducts products={products} type={type}/>
   )
 }

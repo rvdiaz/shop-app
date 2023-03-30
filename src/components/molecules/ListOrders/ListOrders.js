@@ -4,7 +4,6 @@ import { Order } from '../../atoms/Order/Order';
 
 export const ListOrders = (props) => {
     const {orders}=props;
-    console.log('sd');
   return (
     <View
         style={{
